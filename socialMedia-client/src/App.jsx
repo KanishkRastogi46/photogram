@@ -24,7 +24,7 @@ export default function App() {
     if(!res.data.success){
       navigate('/login');
     }
-    setUserDetails({...userDetails, username: res.data.user.username, email: res.data.user.email, bio: "hello I am a web developer and data science and ml enthusiast"});
+    setUserDetails({...userDetails, username: res.data.user.username, email: res.data.user.email, bio: "hello I am a web developer and data science and ml enthusiast", avatar: res.data.user.profileimage});
   };
   
   useEffect(()=>{

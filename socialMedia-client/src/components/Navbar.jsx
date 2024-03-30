@@ -4,8 +4,8 @@ import axios from 'axios';
 import {Button,Navbar} from 'flowbite-react';
 import { AiFillHome } from "react-icons/ai";
 import { BiSolidUser } from "react-icons/bi";
-import { AiFillMessage } from "react-icons/ai";
 import { IoNotificationsSharp } from "react-icons/io5";
+import { BiSolidSearch } from "react-icons/bi";
 
 export default function NavBar() {
   let naviagte= useNavigate();
@@ -26,7 +26,7 @@ export default function NavBar() {
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="https://flowbite-react.com">
-        <img src="logos/photogram.png" className="mr-3 h-full w-20 object-cover sm:h-12" alt="Flowbite React Logo" />
+        <img src="https://res.cloudinary.com/dobcz2ree/image/upload/v1711800694/Photogram/photogram_gzbdqh.png" className="mr-3 h-full w-20 object-cover sm:h-12" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">photogram</span>
       </Navbar.Brand>
       <div className="flex md:order-2">
@@ -34,9 +34,9 @@ export default function NavBar() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="#" className="font-semibold text-2xl" active><AiFillHome /></Navbar.Link>
+        <Navbar.Link href="/profile" className="font-semibold text-2xl" active><AiFillHome /></Navbar.Link>
         <Navbar.Link href="#" className="font-semibold text-2xl" ><IoNotificationsSharp/></Navbar.Link>
-        <Navbar.Link href="#" className="font-semibold text-2xl" ><AiFillMessage/></Navbar.Link>
+        <Navbar.Link href="/profile/searchprofile" className="font-semibold text-2xl" ><BiSolidSearch/></Navbar.Link>
         <Navbar.Link href="/profile/myprofile" className="font-semibold text-2xl" ><BiSolidUser/></Navbar.Link>
       </Navbar.Collapse>
     </Navbar>

@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { userContext } from '../context/userContext'
 import { Button } from 'flowbite-react';
-//import EditProfile from './EditProfile';
 import {Link} from 'react-router-dom';
+import axios from "axios";
+
 
 function UserProfile() {
-  let {userDetails}= userContext(); 
-  //let [edit, setEdit]= useState(false);
+  let {userDetails, setUserDetails}= userContext(); 
 
   console.log(userDetails);
+
   return (
     <>
-      {<div className='container h-full bg-zinc-900 flex flex-col text-white'>
+      <div className='container h-full bg-zinc-900 flex flex-col text-white'>
         <div className="avatar followers h-1/6 mt-10 flex justify-center gap-8">
-            <div className="avatar rounded-full border-2 border-solid h-20 w-20 border-pink-500">
-              <img src={`${userDetails.avatar}`} alt="" />
+            <div className="avatar rounded-full border-2 border-solid h-20 w-20 border-pink-500 object-cover">
+              <img src={`${userDetails.avatar}`} alt="" className='object-cover h-full w-full rounded-full'/>
             </div>
             <div className="post uppercase flex justify-between gap-2"><span>{userDetails.posts}</span><span>posts</span></div>
             <div className="follower uppercase flex justify-between gap-2"><span>{userDetails.followers}</span><span>followers</span></div>
@@ -34,7 +35,7 @@ function UserProfile() {
         <div className="posts h-auto flex flex-wrap justify-around items-center">
 
         </div>
-    </div>}
+      </div>
     </>
   )
 }

@@ -11,6 +11,7 @@ import ForgetPassword from './components/ForgetPassword.jsx'
 import ResetPassword from './components/ResetPassword.jsx'
 import UserProfile from './components/UserProfile.jsx'
 import EditProfile from './components/EditProfile.jsx'
+import SearchProfile from './components/SearchProfile.jsx'
 
 const router= createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router= createBrowserRouter(
       <Route path='/verifyemail' element={<VerifyEmail/>}/>
       <Route path='/profile' element={<App/>}>
         <Route path='' element={<Home/>}/>
+        <Route path='searchprofile' element={<SearchProfile/>}/>
         <Route path='myprofile' element={<UserProfile/>}/>
         <Route path='editprofile' element={<EditProfile/>}/>
       </Route>

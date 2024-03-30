@@ -191,11 +191,31 @@ const resetPassword= function(req, res){
     })
 }
 
+
+const searchprofile= function(req, res){
+    return wrapper(async function(){
+        let users= await userModel.find({username: req.body.username}).select("username profileimage -_id");
+        if(!users){
+            return res.json({
+                message: "0 user found",
+                success: false
+            });
+        }
+        return res.json({
+            message: `${users.length} users found`,
+            success: true,
+            userslist: users
+        });
+    })
+}
+
+
 module.exports= {
     register,
     login,
     verifyEmail,
     logout,
     forgetPassword,
-    resetPassword
+    resetPassword,
+    searchprofile
 }

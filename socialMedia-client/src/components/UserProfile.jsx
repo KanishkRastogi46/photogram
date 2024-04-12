@@ -17,9 +17,9 @@ function UserProfile() {
             <div className="avatar rounded-full border-2 border-solid h-20 w-20 border-pink-500 object-cover">
               <img src={`${userDetails.avatar}`} alt="" className='object-cover h-full w-full rounded-full'/>
             </div>
-            <div className="post uppercase flex justify-between gap-2"><span>{userDetails.posts}</span><span>posts</span></div>
-            <div className="follower uppercase flex justify-between gap-2"><span>{userDetails.followers}</span><span>followers</span></div>
-            <div className="following uppercase flex justify-between gap-2"><span>{userDetails.following}</span><span>following</span>
+            <div className="post flex justify-between gap-2"><span>{userDetails.posts}</span><span>posts</span></div>
+            <div className="follower flex justify-between gap-2"><span>{userDetails.followers}</span><span>followers</span></div>
+            <div className="following flex justify-between gap-2"><span>{userDetails.following}</span><span>following</span>
             </div>
         </div>
         <div className="bio h-auto flex flex-col justify-center items-center gap-8 mb-4">

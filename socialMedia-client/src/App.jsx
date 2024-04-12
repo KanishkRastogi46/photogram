@@ -35,7 +35,7 @@ export default function App() {
     <UserProvider value={{userDetails, setUserDetails}}>
       <div className="container h-screen w-full flex flex-col">
         <NavBar/>
-        <div className='bg-zinc-900 w-screen h-[92%] uppercase text-white'>
+        <div className='bg-zinc-900 w-screen h-[92%] text-white'>
           <Outlet/>
         </div>
       </div>

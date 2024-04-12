@@ -12,6 +12,7 @@ import ResetPassword from './components/ResetPassword.jsx'
 import UserProfile from './components/UserProfile.jsx'
 import EditProfile from './components/EditProfile.jsx'
 import SearchProfile from './components/SearchProfile.jsx'
+import OtherUser from './components/OtherUser.jsx'
 
 const router= createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router= createBrowserRouter(
         <Route path='searchprofile' element={<SearchProfile/>}/>
         <Route path='myprofile' element={<UserProfile/>}/>
         <Route path='editprofile' element={<EditProfile/>}/>
+        <Route path=':usrname' element={<OtherUser/>}/>
       </Route>
     </Route>
   )

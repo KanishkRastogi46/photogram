@@ -1,6 +1,6 @@
 const express= require('express');
 const router= express.Router();
-const { register, login, verifyEmail, logout, forgetPassword, resetPassword, searchprofile }= require('../controllers/user-controller')
+const { register, login, verifyEmail, logout, forgetPassword, resetPassword, searchprofile, getProfile, checkFollow }= require('../controllers/user-controller')
 const isAuthenticated= require('../middleware/authenticated-user');
 const userModel= require('../model/user-model');
 const upload= require('../utils/multer');
@@ -19,7 +19,7 @@ router.route('/profile').post(isAuthenticated, async function(req, res){
         success: true,
         user
     });
-})
+});
 
 router.route('/logout').post(logout);
 
@@ -49,8 +49,12 @@ router.route('/profilechange').post(upload.single('avatar'), async function(req,
         success: true,
         profileimage: req.file.path,
     });
-})
+});
 
-router.route('/searchprofile').post(searchprofile)
+router.route('/searchprofile').post(searchprofile);
+
+router.route('/getprofile').post(getProfile);
+
+router.route('/checkfollow').post(checkFollow);
 
 module.exports= router;

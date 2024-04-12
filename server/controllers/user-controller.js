@@ -1,5 +1,6 @@
 const wrapper= require('../utils/wrapper');
-const userModel= require('../model/user-model')
+const userModel= require('../model/user-model');
+const followModel= require('../model/follow-model');
 const bcrypt= require('bcrypt');
 const jwt= require('jsonwebtoken');
 const forgetPasswordEmail= require('../utils/forgetPasswordEmail');
@@ -194,6 +195,7 @@ const resetPassword= function(req, res){
 
 const searchprofile= function(req, res){
     return wrapper(async function(){
+        console.log(req.body);
         let users= await userModel.find({username: req.body.username}).select("username profileimage -_id");
         if(!users){
             return res.json({
@@ -210,6 +212,57 @@ const searchprofile= function(req, res){
 }
 
 
+const getProfile= function(req, res){
+    return wrapper(async function(){
+        //console.log(req.body.username);
+        let user= await userModel.findOne({username: req.body.username});
+        if(!user){
+            return res.json({
+                message: "User found Successfully",
+                success: false
+            })
+        }else{
+            return res.json({
+                message: "User found Successfully",
+                success: true,
+                user: user,
+                posts: user.posts.length,
+            })
+        }
+    })
+}
+
+
+const checkFollow= function(req,res){
+    return wrapper(async function(){
+        console.log(req.body);        
+        let user= await userModel.findOne({username: req.body.username});
+        //console.log(user);
+        let followUser= await followModel.findOne({userid: user._id});
+        if(!followUser){
+            followUser= await followModel.create({userid: user._id});
+        }
+        let otherUser= await userModel.findOne({username: req.body.otheruser});
+        console.log(otherUser);
+        let getFollowUser= await followModel.findOne({userid: user._id, following: {$all: [otherUser._id]}});
+        console.log(getFollowUser);
+        if(!getFollowUser){
+            return res.json({
+                message: "Not following user",
+                success: true,
+                isFollowing: false
+            })
+        }else{
+            return res.json({
+                message: "Following user",
+                success: true,
+                isFollowing: true
+            })
+        }
+    })
+}
+
+
 module.exports= {
     register,
     login,
@@ -217,5 +270,7 @@ module.exports= {
     logout,
     forgetPassword,
     resetPassword,
-    searchprofile
+    searchprofile,
+    getProfile,
+    checkFollow,
 }

@@ -6,6 +6,7 @@ import { AiFillHome } from "react-icons/ai";
 import { BiSolidUser } from "react-icons/bi";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { BiSolidSearch } from "react-icons/bi";
+import { MdCreateNewFolder } from "react-icons/md";
 
 export default function NavBar() {
   let naviagte= useNavigate();
@@ -36,6 +37,7 @@ export default function NavBar() {
       <Navbar.Collapse>
         <Navbar.Link href="/profile" className="font-semibold text-2xl" active><AiFillHome /></Navbar.Link>
         <Navbar.Link href="#" className="font-semibold text-2xl" ><IoNotificationsSharp/></Navbar.Link>
+        <Navbar.Link href="#" className="font-semibold text-2xl" ><MdCreateNewFolder/></Navbar.Link>
         <Navbar.Link href="/profile/searchprofile" className="font-semibold text-2xl" ><BiSolidSearch/></Navbar.Link>
         <Navbar.Link href="/profile/myprofile" className="font-semibold text-2xl" ><BiSolidUser/></Navbar.Link>
       </Navbar.Collapse>

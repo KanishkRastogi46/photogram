@@ -6,7 +6,8 @@ connectDB();
 const commentSchema= mongoose.Schema({
     comment: String,
     user: {
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Users'
     }
 })
 
@@ -18,7 +19,7 @@ const postSchema= mongoose.Schema({
     caption: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'Users'
     },
     likes: {
         type: Array,
@@ -30,4 +31,4 @@ const postSchema= mongoose.Schema({
 })
 
 
-module.exports= mongoose.models.posts || mongoose.model('posts', postSchema);
+module.exports= mongoose.models.Posts || mongoose.model('Posts', postSchema);
